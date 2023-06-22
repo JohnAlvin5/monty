@@ -22,6 +22,10 @@ int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op
 		{"swap", swap_op},
 		{"add", add_op},
 		{"nop", nop_op},
+		{"sub", sub_op},
+		{"div", div_op},
+		{"mul", mul_op},
+		{"mod", mod_op},
 		{NULL, NULL}
 	};
 
