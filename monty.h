@@ -56,11 +56,11 @@ typedef struct collect
 	char *arg;
 	FILE *file;
 	char *cmd_line;
-} collect_x
+} collect_x;
 extern collect_x collector;
 
 
-int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *file);
+int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op_file);
 void push_op(stack_t **head, unsigned int line_number);
 void pall_op(stack_t **head, unsigned int line_number);
 void pint_op(stack_t **head, unsigned int line_number);

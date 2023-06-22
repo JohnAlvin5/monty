@@ -8,7 +8,7 @@
  */
 void free_list(stack_t *head)
 {
-	dlistint_t *temp;
+	stack_t *temp;
 
 	while (head != NULL)
 	{

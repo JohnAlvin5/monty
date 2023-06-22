@@ -28,6 +28,6 @@ void add_op(stack_t **head, unsigned int line_number)
 	h = *head;
 	sum = h->n + h->next->n;
 	h->next->n = sum;
-	head = h->next;
+	*head = h->next;
 	free(h);
 }

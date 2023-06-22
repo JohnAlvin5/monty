@@ -1,6 +1,6 @@
 #include "monty.h"
 
-int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *file)
+int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op_file)
 {
 	unsigned int i;
 	char *cmd, *delim = " \n\t";
@@ -16,7 +16,7 @@ int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *fi
 		{NULL, NULL}
 	};
 
-	cmd = strtok(content, delim);
+	cmd = strtok(text_line, delim);
 	if (cmd && cmd[0] == '#')
 		return (0);
 
@@ -24,18 +24,19 @@ int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *fi
 
 	while (cmd && opcode_list[i].opcode)
 	{
-		if (strcmp(cmd, opcode_list[i]opcode) == 0)
+		if (strcmp(cmd, opcode_list[i].opcode) == 0)
 		{
 			opcode_list[i].f(stack, line_number);
 			return (EXIT_SUCCESS);
 		}
-		i++
+		i++;
 	}
 
 	if (opcode_list[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);
 		fclose(op_file);
+		free(text_line);
 		free_list(*stack);
 		return (EXIT_FAILURE);
 	}

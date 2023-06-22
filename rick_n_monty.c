@@ -1,6 +1,6 @@
 #include "monty.h"
 
-collect_x collector = {NULL, NULL, NULL}
+collect_x collector = {NULL, NULL, NULL};
 
 /**
  * main - main function
@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	}
 
 	op_file = fopen(argv[1], "r");
-	if (op_file == -1)
+	if (!op_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		return (EXIT_FAILURE);
@@ -36,7 +36,7 @@ int main(int argc, char **argv)
 	{
 		text_line = NULL;
 		op_line = getline(&text_line, &n, op_file);
-		collector.cmd_line = text_file;
+		collector.cmd_line = text_line;
 		line_number++;
 
 		if (op_line > 0)

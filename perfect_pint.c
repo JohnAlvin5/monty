@@ -9,12 +9,12 @@
  */
 void pint_op(stack_t **head, unsigned int line_number)
 {
-	if (*head = NULL)
+	if (*head == NULL)
 	{
 		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 
 		fclose(collector.file);
-		free(bus.cmd_line);
+		free(collector.cmd_line);
 		free_list(*head);
 		exit(EXIT_FAILURE);
 	}
