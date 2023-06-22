@@ -1,6 +1,16 @@
 #ifndef monty_h
 #define monty_h
 
+#define _POSIX_C_SOURCE 200809L
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <string.h>
+#include <fcntl.h>
+#include <sys/types.h>
+
+
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -17,6 +27,7 @@ typedef struct stack_s
         struct stack_s *next;
 } stack_t;
 
+
 /**
  * struct instruction_s - opcode and its function
  * @opcode: the opcode
@@ -32,6 +43,33 @@ typedef struct instruction_s
 } instruction_t;
 
 
+/**
+ * struct collect - stores data that needs to move between files and functions
+ * @arg: value of n in the stack
+ * @file: file opened with the push/pop functions
+ * @cmd_line: single command line from file
+ *
+ * Description: what I've said above
+ */
+typedef struct collect
+{
+	char *arg;
+	FILE *file;
+	char *cmd_line;
+} collect_x
+extern collect_x collector;
+
+
+int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *file);
+void push_op(stack_t **head, unsigned int line_number);
+void pall_op(stack_t **head, unsigned int line_number);
+void pint_op(stack_t **head, unsigned int line_number);
+void pop_op(stack_t **head, unsigned int line_number);
+void swap_op(stack_t **head, unsigned int line_number);
+void add_op(stack_t **head, unsigned int line_number);
+void nop_op(stack_t **head, unsigned int line_number);
+void free_list(stack_t *head);
+int list_len(stack_t *h);
 
 
 #endif
