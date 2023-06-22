@@ -2,7 +2,7 @@
 
 int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op_file)
 {
-	unsigned int i;
+	unsigned int i = 0;
 	char *cmd, *delim = " \n\t";
 
 	instruction_t opcode_list[] = {
@@ -38,7 +38,7 @@ int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op
 		fclose(op_file);
 		free(text_line);
 		free_list(*stack);
-		exit(EXIT_FAILURE);
+		return (EXIT_FAILURE);
 	}
 	return (1);
 }
