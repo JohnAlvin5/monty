@@ -9,26 +9,26 @@ collect_x collector = {NULL, NULL, NULL};
  *
  * Return: 0
  */
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
 	unsigned int line_number = 0;
 	FILE *op_file;
 	char *text_line;
-	size_t n = 300;
-	ssize_t op_line;
+	size_t n = 0;
+	ssize_t op_line = 1;
 	stack_t *stack = NULL;
 
 	if (argc != 2)
 	{
 		fprintf(stderr, "USAGE: monty file\n");
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 
 	op_file = fopen(argv[1], "r");
 	if (!op_file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	collector.file = op_file;
 

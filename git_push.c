@@ -15,7 +15,7 @@ void add_node(stack_t **head, int n)
 	if (new_node == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		return;
+		exit(EXIT_FAILURE);
 	}
 
 	new_node->n = n;
@@ -37,7 +37,7 @@ void add_node(stack_t **head, int n)
 void push_op(stack_t **head, unsigned int line_number)
 {
 	int n, i = 0;
-	int int_check;
+	int int_check = 0;
 	/* checks if arg is between integer values of ASCII */
 
 	if (collector.arg)

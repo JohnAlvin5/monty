@@ -20,25 +20,25 @@ int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op
 	if (cmd && cmd[0] == '#')
 		return (0);
 
-	collector.arg = strtok (NULL, delim);
+	collector.arg = strtok(NULL, delim);
 
 	while (cmd && opcode_list[i].opcode)
 	{
 		if (strcmp(cmd, opcode_list[i].opcode) == 0)
 		{
 			opcode_list[i].f(stack, line_number);
-			return (EXIT_SUCCESS);
+			return (0);
 		}
 		i++;
 	}
 
-	if (opcode_list[i].opcode == NULL)
+	if (cmd && opcode_list[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%d: unknown instruction %s\n", line_number, cmd);
 		fclose(op_file);
 		free(text_line);
 		free_list(*stack);
-		return (EXIT_FAILURE);
+		exit(EXIT_FAILURE);
 	}
 	return (1);
 }
