@@ -26,7 +26,7 @@ void sub_op(stack_t **head, unsigned int line_number)
 	}
 
 	h = *head;
-	diff = h->next->n + h->n;
+	diff = h->next->n - h->n;
 	h->next->n = diff;
 	*head = h->next;
 	free(h);
