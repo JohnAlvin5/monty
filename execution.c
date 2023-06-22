@@ -1,5 +1,14 @@
 #include "monty.h"
 
+/**
+ * execute - parses string, searches for function and executes
+ * @text_line: string containing command and argumets
+ * @stack: the stack being worked on
+ * @line_number: file line containing command
+ * @op_file: monty file containing comands
+ *
+ * Return: 0
+ */
 int execute(char *text_line, stack_t **stack, unsigned int line_number, FILE *op_file)
 {
 	unsigned int i = 0;
